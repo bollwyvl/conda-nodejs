@@ -1,6 +1,7 @@
 #!/bin/sh
 
-for d in bin include lib; do
-    [ ! -e $PREFIX/$d ] && mkdir -p $PREFIX/$d
-    cp -r $SRC_DIR/$d/* $PREFIX/$d
-done
+[ ! -e $PREFIX/bin ] && mkdir -p $PREFIX/bin
+[ ! -e $PREFIX/lib ] && mkdir -p $PREFIX/lib
+
+mv -f $SRC_DIR/bin/node $PREFIX/bin
+mv -f $SRC_DIR/lib/* $PREFIX/lib
