@@ -1,0 +1,33 @@
+package:
+  name: nodejs
+  version: "0.10.33"
+
+source:
+  fn: node.exe # [win]
+  fn: node-v0.10.33-darwin-x64.tar.gz # [osx]
+  fn: node-v0.10.33-linux-x64.tar.gz # [linux64]
+  fn: node-v0.10.33-linux-x86.tar.gz # [linux32]
+
+  url: https://nodejs.org/dist/v0.10.33/node.exe # [win32]
+  sha1: 69275030a0549c27189a8f25396997deb70462ad # [win32]
+
+  url: https://nodejs.org/dist/v0.10.33/x64/node.exe # [win64]
+  sha1: a4142d8a122317cc2e32caa643def2797e5f2cd7 # [win64]
+
+  url: https://nodejs.org/dist/v0.10.33/node-v0.10.33-darwin-x64.tar.gz # [osx]
+  sha1: 03e72005a4ed612aa7a984d840f148bfb76f3c5f # [osx]
+
+  url: https://nodejs.org/dist/v0.10.33/node-v0.10.33-linux-x64.tar.gz # [linux64]
+  sha1: 4eba69caf7368d7f388700eb02996f85b06f457a # [linux64]
+
+  url: https://nodejs.org/dist/v0.10.33/node-v0.10.33-linux-x86.tar.gz # [linux32]
+  sha1: 62a58b74851350a935e781d216484966b04ae097 # [linux32]
+
+test:
+  commands:
+    - node --help
+    - node --version
+
+about:
+  home: http://nodejs.org/dist
+  license: V8
