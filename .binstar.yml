@@ -1,5 +1,4 @@
 package: nodejs
-user: cpcloud
 
 platform:
   - linux-64
