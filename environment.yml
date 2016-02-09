@@ -1,6 +1,7 @@
 name: conda-nodejs
 dependencies:
-- python
+- python=3
 - notebook
 - pyyaml
 - requests
+- conda-build
