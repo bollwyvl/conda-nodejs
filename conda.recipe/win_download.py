@@ -5,6 +5,11 @@ try:
 except:
     from urllib import urlretrieve
 
+import zipfile
+import tempfile
+import shutil
+import glob
+
 
 CHECKSUMS = {
     "x86": {
@@ -38,3 +43,31 @@ for filename in FILES:
     with open(full_filename, "rb") as f:
         contents = f.read()
     assert hashlib.sha256(contents).hexdigest() == CHECKSUMS[ARCH][filename]
+
+tmpdir = tempfile.mkdtemp()
+
+NPM_PATH = os.path.join(TARGET_DIR, "node_modules", "npm")
+
+try:
+    urlretrieve("https://github.com/npm/npm/archive/v3.7.1.zip",
+                os.path.join(tmpdir, "npm.zip"))
+
+    with zipfile.ZipFile(os.path.join(tmpdir, "npm.zip"), "r") as z:
+        z.extractall(tmpdir)
+
+    shutil.copytree(
+        os.path.join(tmpdir, "npm-3.7.1"),
+        NPM_PATH
+    )
+
+    shutil.copy(
+        os.path.join(NPM_PATH, "bin", "npm.cmd"),
+        os.path.join(TARGET_DIR)
+    )
+
+    print(glob.glob(os.path.join(NPM_PATH)))
+
+except Exception as err:
+    raise err
+finally:
+    shutil.rmtree(tmpdir)
