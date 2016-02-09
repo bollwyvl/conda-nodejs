@@ -1,0 +1,6 @@
+name: conda-nodejs
+dependencies:
+- python
+- notebook
+- pyyaml
+- requests
