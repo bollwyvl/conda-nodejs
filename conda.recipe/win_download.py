@@ -1,6 +1,10 @@
 import hashlib
 import os
-from urllib import urlretrieve
+try:
+    from urllib.request import urlretrieve
+except:
+    from urllib import urlretrieve
+
 
 CHECKSUMS = {
     "x86": {
